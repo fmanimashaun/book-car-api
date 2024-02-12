@@ -325,6 +325,9 @@ DEPENDENCIES
   rails-controller-testing
   rspec-rails
   rswag
+  rswag-api
+  rswag-specs
+  rswag-ui
   rubocop
   tzinfo-data
 
