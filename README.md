@@ -27,7 +27,7 @@
 
 # 📖 BookACar Api <a name="about-project"></a>
 
-**BookACar RESTful API** for the (BookACar)[https://github.com/fmanimashaun/book-a-car] reservation application, enabling car data management, reservations, and user authentication. Developed as the Microverse Full-Stack Web Development Capstone Project, demonstrating Ruby on Rails, React, database design, API development, and collaboration skills..
+**BookACar RESTful API** for the [BookACar](https://github.com/fmanimashaun/book-a-car) reservation application, enabling car data management, reservations, and user authentication. Developed as the Microverse Full-Stack Web Development Capstone Project, demonstrating Ruby on Rails, React, database design, API development, and collaboration skills..
 
 - [BookACar (Frontend) Kanban Board](https://github.com/users/fmanimashaun/projects/16)
 - [BookACar Api (Backend) Kanban Board](https://github.com/users/fmanimashaun/projects/16/views/1)
