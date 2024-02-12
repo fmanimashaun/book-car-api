@@ -1,3 +1,4 @@
+---
 openapi: 3.0.1
 info:
   title: API V1
@@ -7,57 +8,44 @@ paths:
     get:
       summary: list cities
       responses:
-        "200":
+        '200':
           description: successful
     post:
       summary: create city
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                city:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                  required:
-                    - name
+      parameters: []
       responses:
-        "200":
+        '200':
           description: successful
   "/api/v1/cities/{id}":
     parameters:
-      - name: id
-        in: path
-        description: id
-        required: true
-        schema:
-          type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
     get:
       summary: show city
       responses:
-        "200":
+        '200':
           description: successful
     patch:
       summary: update city
       responses:
-        "200":
+        '200':
           description: successful
     put:
       summary: update city
       responses:
-        "200":
+        '200':
           description: successful
     delete:
       summary: delete city
       responses:
-        "200":
+        '200':
           description: successful
 servers:
-  - url: http://{defaultHost}
-    variables:
-      defaultHost:
-        default: localhost:3000
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000

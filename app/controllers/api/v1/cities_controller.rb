@@ -1,4 +1,4 @@
-class Api::V1::CitiesController < ApplicationController
+class API::V1::CitiesController < ApplicationController
   before_action :set_city, only: %i[show update destroy]
 
   # GET /api/v1/cities
