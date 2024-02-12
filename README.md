@@ -43,7 +43,7 @@
 **ER Diagram**
 The API is designed as per the ER Diagram shown below which dictates the association of models and their relationships.
 
-<img src="./ER Diagram.png">
+<img src="./screenshots/ERD.png">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
