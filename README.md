@@ -208,8 +208,7 @@ And think If you enjoy it gift us a star.
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
 - Behance and Murat Korkmaz for the [original design](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
-- Microverse for providing the opportunity to learn in a collaborative environment.
-- GitHub for version control and collaboration tools.
+- [Microverse](https://www.microverse.org/) for providing the opportunity to learn in a collaborative environment.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
