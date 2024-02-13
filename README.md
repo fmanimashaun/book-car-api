@@ -1,8 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-    <img src="screenshots/logo.png" alt="" width="170"  height="auto" />
-    <h2><b>Book a Ride App Api</b></h2>
+    <img src="screenshots/cover-invert.png" alt="" width="170"  height="auto" />
 </div>
 
 # 📗 Table of Contents
