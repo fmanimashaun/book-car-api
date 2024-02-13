@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-    <img src="screenshots/cover-invert.png" alt="" width="170"  height="auto" />
+    <img src="screenshots/cover-invert.png" alt="" width="200"  height="auto" />
 </div>
 
 # 📗 Table of Contents
