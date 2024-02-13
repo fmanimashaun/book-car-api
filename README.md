@@ -23,9 +23,9 @@
   - [❓ FAQ (OPTIONAL) ](#-faq-optional-)
   - [📝 License ](#-license-)
 
-# 📖 BookACar Api <a name="about-project"></a>
+# 📖 BookCar Api <a name="about-project"></a>
 
-**BookACar RESTful API** for the [BookACar](https://github.com/fmanimashaun/book-a-car) reservation application, enabling car data management, reservations, and user authentication. Developed as the Microverse Full-Stack Web Development Capstone Project, demonstrating Ruby on Rails, React, database design, API development, and collaboration skills.
+**BookCar RESTful API** for the [BookACar](https://github.com/fmanimashaun/book-car) reservation application, enabling car data management, reservations, and user authentication. Developed as the Microverse Full-Stack Web Development Capstone Project, demonstrating Ruby on Rails, React, database design, API development, and collaboration skills.
 
 - [BookACar (Frontend) Kanban Board](https://github.com/users/fmanimashaun/projects/16)
 - [BookACar Api (Backend) Kanban Board](https://github.com/users/fmanimashaun/projects/16/views/1)
@@ -102,7 +102,7 @@ Before you begin, ensure you have the following prerequisites installed on your 
 In your terminal, navigate to the folder of your choice and clone the repository with the following commands:
 
 ```sh
-git clone https://github.com/EvansSnave/book-a-car-api.git
+git clone https://github.com/fmanimashaun/book-car-api.git
 
 ```
 
@@ -111,7 +111,7 @@ git clone https://github.com/EvansSnave/book-a-car-api.git
 After cloning the project, change into the project directory:
 
 ```sh
-cd cd book-a-car-api
+cd cd book-car-api
 
 bundle install
 
