@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :engine_type do
-    name { "MyString" }
+    name { 'MyString' }
   end
 end
