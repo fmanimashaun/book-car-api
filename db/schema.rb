@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_12_212344) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_15_172655) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,12 +42,78 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_12_212344) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "car_details", force: :cascade do |t|
+    t.bigint "car_id", null: false
+    t.bigint "engine_type_id", null: false
+    t.integer "horsepower"
+    t.integer "torque"
+    t.string "fuel_economy"
+    t.integer "seating_capacity"
+    t.string "cargo_space"
+    t.string "infotainment_system"
+    t.string "safety_rating"
+    t.string "tech_features"
+    t.string "special_features"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_car_details_on_car_id"
+    t.index ["engine_type_id"], name: "index_car_details_on_engine_type_id"
+  end
+
+  create_table "cars", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "engine_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.date "date"
+    t.bigint "city_id", null: false
+    t.bigint "car_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_reservations_on_car_id"
+    t.index ["city_id"], name: "index_reservations_on_city_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "jti", null: false
+    t.string "name", null: false
+    t.string "username", null: false
+    t.integer "role"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["jti"], name: "index_users_on_jti", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "car_details", "cars"
+  add_foreign_key "car_details", "engine_types"
+  add_foreign_key "reservations", "cars"
+  add_foreign_key "reservations", "cities"
+  add_foreign_key "reservations", "users"
 end

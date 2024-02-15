@@ -1,5 +1,6 @@
 FactoryBot.define do
-  factory :city do
+  factory :car do
     name { 'MyString' }
+    description { 'MyText' }
   end
 end

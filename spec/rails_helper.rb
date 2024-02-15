@@ -35,21 +35,6 @@ RSpec.configure do |config|
     Rails.root.join('spec/fixtures')
   ]
 
-  # FactoryBot
-  config.include FactoryBot::Syntax::Methods
-
-  # Devise
-  config.include Devise::Test::IntegrationHelpers, type: :request
-  config.include Devise::Test::IntegrationHelpers, type: :view
-  config.include Devise::Test::IntegrationHelpers, type: :system
-
-  # RSpec Rails
-  %i[controller view request].each do |type|
-    config.include(Rails::Controller::Testing::TestProcess, type:)
-    config.include(Rails::Controller::Testing::TemplateAssertions, type:)
-    config.include Rails::Controller::Testing::Integration, type:
-  end
-
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
