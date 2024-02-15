@@ -30,4 +30,5 @@ jobs:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost/test_database
           SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
+          DEVISE_JWT_SECRET_KEY: ${{ secrets.DEVISE_JWT_SECRET_KEY }}
         run: bundle exec rails db:create db:schema:load && bundle exec rspec
