@@ -1,0 +1,2 @@
+class EngineType < ApplicationRecord
+end

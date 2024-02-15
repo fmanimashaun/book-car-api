@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :city do
+  factory :engine_type do
     name { "MyString" }
   end
 end
