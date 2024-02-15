@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
   include Devise::JWT::RevocationStrategies::JTIMatcher
 
   devise :database_authenticatable, :registerable, :recoverable, :validatable, :jwt_authenticatable,

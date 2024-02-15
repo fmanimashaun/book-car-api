@@ -1,4 +1,4 @@
 class Car < ApplicationRecord
-  has_many :reservations
-  has_many :car_details
+  has_many :reservations, dependent: :destroy
+  has_many :car_details, dependent: :destroy
 end
