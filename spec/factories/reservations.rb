@@ -1,8 +1,9 @@
 FactoryBot.define do
   factory :reservation do
-    date { '2024-02-15' }
-    city { nil }
+    date { Date.today }
     car { nil }
     user { nil }
+
+    association :city
   end
 end
