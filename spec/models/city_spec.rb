@@ -36,16 +36,13 @@ RSpec.describe City, type: :model do
   end
 
   it "It can have many reservation records" do
-
     engine_type = FactoryBot.create(:engine_type)
     car = FactoryBot.create(:car)
     car_detail = FactoryBot.create(:car_detail, engine_type: engine_type, car: car)
+    user = FactoryBot.create(:user)
 
-    reservation1 = FactoryBot.build(:reservation, car: car, city: city)
-    reservation2 = FactoryBot.build(:reservation, car: car, city: city)
-
-    city.reservations << reservation1
-    city.reservations << reservation2
+    reservation1 = FactoryBot.create(:reservation, car: car, city: city, user: user)
+    reservation2 = FactoryBot.create(:reservation, car: car, city: city, user: user)
 
     expect(city.reservations).to include(reservation1, reservation2)
   end
