@@ -1,4 +1,4 @@
 class ReservationSerializer
   include JSONAPI::Serializer
-  attributes :date
+  attributes :id, :date, :city, :car, :user
 end
