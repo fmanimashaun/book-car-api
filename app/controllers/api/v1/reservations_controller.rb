@@ -18,6 +18,13 @@ class API::V1::ReservationsController < ApplicationController
     }, status: :ok
   end
 
+  def show
+    render json: {
+      status: { code: 200, message: 'Reservation fetched successfully' },
+      data: ReservationSerializer.new(@reservation).serializable_hash[:data][:attributes]
+    }
+  end
+
   private
   def set_reservation
     @reservation = Reservation.find params[:id]
