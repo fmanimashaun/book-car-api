@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :car_detail do
     car { nil }
-    engine_type { nil }
     horsepower { 1 }
     torque { 1 }
     fuel_economy { 'MyString' }
@@ -11,5 +10,7 @@ FactoryBot.define do
     safety_rating { 'MyString' }
     tech_features { 'MyString' }
     special_features { 'MyString' }
+
+    association :engine_type
   end
 end
