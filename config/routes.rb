@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :cities
       resources :cars, except: [:index]
+      resources :engine_type, except: [:index]
     end
   end
 

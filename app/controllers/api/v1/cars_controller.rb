@@ -3,13 +3,13 @@ class API::V1::CarsController < ApplicationController
 
   def show
     render json: {
-      status: {
-        code: 200,
-        message: 'Car fetched successfully'
-      },
-      data: CarWithDetailsSerializer.new(@car).serializable_hash[:data][:attributes]
-    },
-    status: :ok
+             status: {
+               code: 200,
+               message: 'Car fetched successfully'
+             },
+             data: CarWithDetailsSerializer.new(@car).serializable_hash[:data][:attributes]
+           },
+           status: :ok
   end
 
   def create
@@ -17,13 +17,13 @@ class API::V1::CarsController < ApplicationController
 
     if @car.save
       render json: {
-        status: {
-          code: 200,
-          message: 'Car successfully created'
-        },
-        data: CarWithDetailsSerializer.new(@car).serializable_hash[:data][:attributes]
-      },
-      status: :created
+               status: {
+                 code: 200,
+                 message: 'Car successfully created'
+               },
+               data: CarWithDetailsSerializer.new(@car).serializable_hash[:data][:attributes]
+             },
+             status: :created
     else
       render json: @car.errors, status: :unprocessable_entity
     end
@@ -32,13 +32,13 @@ class API::V1::CarsController < ApplicationController
   def update
     if @car.update(car_params)
       render json: {
-        status: {
-          code: 200,
-          message: "Car successfully updated"
-        },
-        data: CarWithDetailsSerializer.new(@car).serializable_hash[:data][:attributes]
-      },
-        status: :ok
+               status: {
+                 code: 200,
+                 message: 'Car successfully updated'
+               },
+               data: CarWithDetailsSerializer.new(@car).serializable_hash[:data][:attributes]
+             },
+             status: :ok
     else
       render json: @car.errors, status: :unprocessable_entity
     end
@@ -47,12 +47,12 @@ class API::V1::CarsController < ApplicationController
   def destroy
     @car.destroy
     render json: {
-      status: {
-        code: 200,
-        message: "Car successfully deleted"
-      }
-    },
-    status: :ok
+             status: {
+               code: 200,
+               message: 'Car successfully deleted'
+             }
+           },
+           status: :ok
   end
 
   private
