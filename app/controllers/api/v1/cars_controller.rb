@@ -1,5 +1,5 @@
 class API::V1::CarsController < ApplicationController
-  before_action :set_car, only: %i[show update]
+  before_action :set_car, only: %i[show update destroy]
 
   def show
     render json: {
@@ -42,6 +42,17 @@ class API::V1::CarsController < ApplicationController
     else
       render json: @car.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @car.destroy
+    render json: {
+      status: {
+        code: 200,
+        message: "Car successfully deleted"
+      }
+    },
+    status: :ok
   end
 
   private
