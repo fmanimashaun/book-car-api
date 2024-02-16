@@ -11,6 +11,13 @@ class API::V1::ReservationsController < ApplicationController
     }, status: :ok
   end
 
+  def destroy
+    @reservation.destroy!
+    render json: {
+      status: { code: 200, message: "Reservation deleted successfully." },
+    }, status: :ok
+  end
+
   private
   def set_reservation
     @reservation = Reservation.find params[:id]
