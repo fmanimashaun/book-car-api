@@ -37,6 +37,17 @@ class API::V1::ReservationsController < ApplicationController
     end
   end
 
+  def update
+    if @reservation.update(reservation_params)
+      render json: {
+        status: { code: 200, message: 'Reservation created successfully' },
+        data: ReservationSerializer.new(@reservation).serializable_hash[:data][:attributes]
+      }, status: :ok
+    else
+      render json: @reservation.errors, status: :unprocessable_entity
+    end
+  end
+
   private
   def set_reservation
     @reservation = Reservation.find params[:id]
