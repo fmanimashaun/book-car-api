@@ -4,13 +4,13 @@ RSpec.describe Reservation, type: :model do
   let(:city) { FactoryBot.create(:city) }
   let(:car) { FactoryBot.create(:car) }
   let(:user) { FactoryBot.create(:user) }
-  let(:reservation) { FactoryBot.create(:reservation, car: car, city: city, user: user) }
+  let(:reservation) { FactoryBot.create(:reservation, car:, city:, user:) }
 
-  it "Creates a reservation with valid attributes" do
+  it 'Creates a reservation with valid attributes' do
     expect(reservation).to be_valid
   end
 
-  describe "with invalid attributes" do
+  describe 'with invalid attributes' do
     it "Doesn't create a reservation with invalid car attribute" do
       reservation = FactoryBot.build(:reservation, car: nil)
 
@@ -30,7 +30,7 @@ RSpec.describe Reservation, type: :model do
     end
   end
 
-  describe "associations" do
+  describe 'associations' do
     it { should belong_to(:city) }
     it { should belong_to(:car) }
     it { should belong_to(:user) }

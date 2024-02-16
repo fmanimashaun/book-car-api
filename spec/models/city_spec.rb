@@ -3,18 +3,18 @@ require 'rails_helper'
 RSpec.describe City, type: :model do
   let(:city) { FactoryBot.create(:city) }
 
-  it "Creates a city with valid attributes" do
+  it 'Creates a city with valid attributes' do
     expect(city).to be_valid
   end
 
-  describe "fails to create a city with invalid attributes" do
-    it "Name attribute is not present" do
+  describe 'fails to create a city with invalid attributes' do
+    it 'Name attribute is not present' do
       city = FactoryBot.build(:city, name: nil)
 
       expect(city).to_not be_valid
     end
 
-    it "name attribute is too long" do
+    it 'name attribute is too long' do
       city = FactoryBot.build(:city, name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed sem lectus.
       Ut non fermentum velit. Nunc facilisis diam id ante auctor rutrum. Proin mauris ipsum, scelerisque et convallis
       ac, molestie quis turpis. Vivamus rhoncus ex non arcu mattis, non sollicitudin est pellentesque. Curabitur neque
@@ -28,21 +28,21 @@ RSpec.describe City, type: :model do
       expect(city).to_not be_valid
     end
 
-    it "name attribute is too short" do
-      city = FactoryBot.build(:city, name: "")
+    it 'name attribute is too short' do
+      city = FactoryBot.build(:city, name: '')
 
       expect(city).to_not be_valid
     end
   end
 
-  it "It can have many reservation records" do
+  it 'It can have many reservation records' do
     engine_type = FactoryBot.create(:engine_type)
     car = FactoryBot.create(:car)
-    car_detail = FactoryBot.create(:car_detail, engine_type: engine_type, car: car)
+    FactoryBot.create(:car_detail, engine_type:, car:)
     user = FactoryBot.create(:user)
 
-    reservation1 = FactoryBot.create(:reservation, car: car, city: city, user: user)
-    reservation2 = FactoryBot.create(:reservation, car: car, city: city, user: user)
+    reservation1 = FactoryBot.create(:reservation, car:, city:, user:)
+    reservation2 = FactoryBot.create(:reservation, car:, city:, user:)
 
     expect(city.reservations).to include(reservation1, reservation2)
   end
