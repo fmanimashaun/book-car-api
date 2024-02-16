@@ -1,5 +1,5 @@
 class API::V1::CarsController < ApplicationController
-  before_action :set_car, only: %i[show]
+  before_action :set_car, only: %i[show update]
 
   def show
     render json: {
@@ -24,6 +24,21 @@ class API::V1::CarsController < ApplicationController
         data: CarWithDetailsSerializer.new(@car).serializable_hash[:data][:attributes]
       },
       status: :created
+    else
+      render json: @car.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @car.update(car_params)
+      render json: {
+        status: {
+          code: 200,
+          message: "Car successfully updated"
+        },
+        data: CarWithDetailsSerializer.new(@car).serializable_hash[:data][:attributes]
+      },
+        status: :ok
     else
       render json: @car.errors, status: :unprocessable_entity
     end
