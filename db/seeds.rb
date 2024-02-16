@@ -1,5 +1,5 @@
 # create the admin user
-User.find_or_create_by!(username: Rails.application.credentials.admin[:username]) do |user|
+users = User.find_or_create_by!(username: Rails.application.credentials.admin[:username]) do |user|
   user.password = Rails.application.credentials.admin[:password]
   user.password_confirmation = Rails.application.credentials.admin[:password]
   user.email = Rails.application.credentials.admin[:email]
@@ -37,3 +37,7 @@ cities.each { |city_name| City.find_or_create_by!(name: city_name) }
 # Create car models
 
 car_names = ['Toyota Camry', 'Honda Accord', 'Ford Mustang', 'Chevrolet Malibu', 'Hyundai Sonata', 'Nissan Altima', 'Volkswagen Passat', 'Subaru Legacy', 'Kia Optima', 'Audi A4', 'BMW 3 Series', 'Mercedes-Benz C-Class', 'Lexus ES', 'Volvo S60', 'Infiniti Q50', 'Acura TLX', 'Cadillac CT5', 'Lincoln MKZ', 'Alfa Romeo Giulia', 'Jaguar XE']
+car_names.each_with_index { |car_name, index| Car.find_or_create_by!(name: car_name, description: "Description #{index + 1}") }
+
+Reservation.create!(date: Date.tomorrow, car: Car.first, city: City.first, user: User.first)
+Reservation.create!(date: Date.tomorrow, car:Car.last, city: City.last, user: User.last)
