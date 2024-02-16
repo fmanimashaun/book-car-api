@@ -1,7 +1,17 @@
 class API::V1::ReservationsController < ApplicationController
   before_action :set_reservation, only: [:destroy, :show, :update]
-  private
 
+  def index
+    @data = Reservation.all
+    render json: {
+      status: { code: 200, message: 'Reservations retrieved successfully.' },
+      reservations: @data.map do |reservation|
+        ReservationSerializer.new(reservation).serializable_hash[:data][:attributes]
+      end
+    }, status: :ok
+  end
+
+  private
   def set_reservation
     @reservation = Reservation.find params[:id]
   end
