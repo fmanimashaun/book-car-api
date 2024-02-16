@@ -8,7 +8,25 @@ class API::V1::CarsController < ApplicationController
         message: 'Car fetched successfully'
       },
       data: CarWithDetailsSerializer.new(@car).serializable_hash[:data][:attributes]
-    }, status: :ok
+    },
+    status: :ok
+  end
+
+  def create
+    @car = Car.new(car_params)
+
+    if @car.save
+      render json: {
+        status: {
+          code: 200,
+          message: 'Car successfully created'
+        },
+        data: CarWithDetailsSerializer.new(@car).serializable_hash[:data][:attributes]
+      },
+      status: :created
+    else
+      render json: @car.errors, status: :unprocessable_entity
+    end
   end
 
   private
@@ -26,7 +44,6 @@ class API::V1::CarsController < ApplicationController
         horsepower
         torque
         fuel_economy
-        range
         seating_capacity
         cargo_space
         infotainment_system
