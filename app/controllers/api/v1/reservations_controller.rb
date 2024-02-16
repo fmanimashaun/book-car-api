@@ -1,5 +1,5 @@
 class API::V1::ReservationsController < ApplicationController
-  before_action :set_reservation, only: [:destroy, :show, :update]
+  before_action :set_reservation, only: %i[destroy show update]
 
   def index
     @data = Reservation.all
@@ -14,7 +14,7 @@ class API::V1::ReservationsController < ApplicationController
   def destroy
     @reservation.destroy!
     render json: {
-      status: { code: 200, message: "Reservation deleted successfully." },
+      status: { code: 200, message: 'Reservation deleted successfully.' }
     }, status: :ok
   end
 
@@ -49,6 +49,7 @@ class API::V1::ReservationsController < ApplicationController
   end
 
   private
+
   def set_reservation
     @reservation = Reservation.find params[:id]
   end
