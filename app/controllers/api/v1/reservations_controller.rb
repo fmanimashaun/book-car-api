@@ -2,7 +2,7 @@ class API::V1::ReservationsController < ApplicationController
   before_action :set_reservation, only: %i[destroy show update]
 
   def index
-    @data = Reservation.all
+    @data = Reservation.where(user_id:current_user.id)
     render json: {
       status: { code: 200, message: 'Reservations retrieved successfully.' },
       reservations: @data.map do |reservation|
@@ -55,6 +55,6 @@ class API::V1::ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:date, :city_id, :car_id, user_id)
+    params.require(:reservation).permit(:date, :city_id, :car_id, :user_id)
   end
 end
