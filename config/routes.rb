@@ -3,9 +3,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :cities
       resources :reservations
+      resources :cars, except: [:index]
+      resources :engine_type, except: [:index]
     end
   end
-  
+
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   get '/current_user', to: 'users/current_user#index'
