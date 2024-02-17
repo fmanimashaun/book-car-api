@@ -1,6 +1,18 @@
 class API::V1::CarsController < ApplicationController
   before_action :set_car, only: %i[show update destroy]
 
+  def index
+    @cars = Car.all
+    render json: {
+              status: {
+                code: 200,
+                message: 'Cars fetched successfully'
+              },
+              data: CarWithDetailsSerializer.new(@cars).serializable_hash[:data].map { |car| car[:attributes] }
+            },
+            status: :ok
+  end
+
   def show
     render json: {
              status: {
