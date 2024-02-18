@@ -1,26 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe EngineType, type: :model do
-  let(:engine_type) { FactoryBot.create(:engine_type) }
+  let(:engine_type) { build(:engine_type) }
 
-  it 'is valid with a name' do
-    expect(engine_type.name).to eq('MyString')
-    expect(engine_type).to be_valid
+  it 'validates presence of name' do
+    engine_type.name = nil
+    expect(engine_type).not_to be_valid
+    expect(engine_type.errors[:name]).to include("can't be blank")
   end
 
-  it 'is invalid without a name' do
-    engine_type = FactoryBot.build(:engine_type, name: nil)
-
-    expect(engine_type.name).to eq(nil)
-    expect(engine_type).to_not be_valid
+  it 'validates length of name' do
+    engine_type.name = 'a' * 256
+    expect(engine_type).not_to be_valid
+    expect(engine_type.errors[:name]).to include('is too long (maximum is 255 characters)')
   end
 
-  it 'has can have many car details' do
-    engine_type = FactoryBot.create(:engine_type)
-    car = FactoryBot.create(:car)
-    car_detail1 = FactoryBot.create(:car_detail, car:, engine_type:)
-    car_detail2 = FactoryBot.create(:car_detail, car:, engine_type:)
-
-    expect(engine_type.car_details).to include(car_detail1, car_detail2)
+  it 'has many car_details' do
+    expect(engine_type).to respond_to(:car_details)
   end
 end

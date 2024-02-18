@@ -55,9 +55,13 @@ group :development do
 end
 
 group :test do
-  gem 'shoulda-matchers'
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
+# authentication and authorization
+gem 'cancancan'
 gem 'devise'
 gem 'devise-jwt'
 gem 'jsonapi-serializer'

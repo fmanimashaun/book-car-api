@@ -1,4 +1,4 @@
 class CarSerializer
   include JSONAPI::Serializer
-  attributes :name, :description
+  attributes :id, :name, :description, :image_url
 end

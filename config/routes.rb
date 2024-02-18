@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :cities
-      resources :reservations
-      resources :cars, except: [:index]
-      resources :engine_type, except: [:index]
+      resources :initial_data, only: [:index]
+      resources :cities, except: [:index, :new, :edit]
+      resources :cars, except: [:index, :new, :edit]
+      resources :reservations, except: [:new, :edit]
     end
   end
 
