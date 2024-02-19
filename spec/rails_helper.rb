@@ -32,6 +32,21 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+   # Configuration for using devise in testing for controllers
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  # Configuration for using devise in testing for requests
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  # Configuration for using devise in testing for views
+  config.include Devise::Test::ControllerHelpers, type: :view
+
+  # Facilitates user authentication in feature specs
+  config.include Warden::Test::Helpers, type: :feature
+
+  # configurations for Shoulda Matchers
+  config.include FactoryBot::Syntax::Methods
+  config.include Shoulda::Matchers::ActiveModel, type: :model
+  config.include Shoulda::Matchers::ActiveRecord, type: :model
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
