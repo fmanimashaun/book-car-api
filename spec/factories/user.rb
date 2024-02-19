@@ -10,5 +10,9 @@ FactoryBot.define do
     role { :user }
     created_at { Time.zone.now }
     updated_at { Time.zone.now }
+
+    trait :admin do
+      role { :admin }
+    end
   end
 end
