@@ -70,3 +70,5 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 4000 }
 end
+
+Rails.application.routes.default_url_options[:host] = 'localhost:4000'

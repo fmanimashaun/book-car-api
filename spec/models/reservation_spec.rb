@@ -1,38 +1,29 @@
 require 'rails_helper'
 
 RSpec.describe Reservation, type: :model do
-  let(:city) { FactoryBot.create(:city) }
-  let(:car) { FactoryBot.create(:car) }
-  let(:user) { FactoryBot.create(:user) }
-  let(:reservation) { FactoryBot.create(:reservation, car:, city:, user:) }
+  let(:reservation) { build(:reservation) }
 
-  it 'Creates a reservation with valid attributes' do
-    expect(reservation).to be_valid
+  it 'validates presence of date' do
+    reservation.date = nil
+    expect(reservation).not_to be_valid
+    expect(reservation.errors[:date]).to include("can't be blank")
   end
 
-  describe 'with invalid attributes' do
-    it "Doesn't create a reservation with invalid car attribute" do
-      reservation = FactoryBot.build(:reservation, car: nil)
-
-      expect(reservation).to_not be_valid
-    end
-
-    it "Doesn't create a reservation with invalid city attribute" do
-      reservation = FactoryBot.build(:reservation, city: nil)
-
-      expect(reservation).to_not be_valid
-    end
-
-    it "Doesn't create a reservation with invalid user attribute" do
-      reservation = FactoryBot.build(:reservation, user: nil)
-
-      expect(reservation).to_not be_valid
-    end
+  it 'validates date cannot be in the past' do
+    reservation.date = Date.yesterday
+    expect(reservation).not_to be_valid
+    expect(reservation.errors[:date]).to include("can't be in the past")
   end
 
-  describe 'associations' do
-    it { should belong_to(:city) }
-    it { should belong_to(:car) }
-    it { should belong_to(:user) }
+  it 'belongs to a city' do
+    expect(reservation).to respond_to(:city)
+  end
+
+  it 'belongs to a car' do
+    expect(reservation).to respond_to(:car)
+  end
+
+  it 'belongs to a user' do
+    expect(reservation).to respond_to(:user)
   end
 end

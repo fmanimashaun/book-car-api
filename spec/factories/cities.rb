@@ -1,5 +1,7 @@
+require 'faker'
+
 FactoryBot.define do
   factory :city do
-    name { 'MyString' }
+    name { Faker::Address.city }
   end
 end

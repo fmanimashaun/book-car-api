@@ -1,5 +1,7 @@
+require 'faker'
+
 FactoryBot.define do
   factory :engine_type do
-    name { 'MyString' }
+    name { Faker::Vehicle.engine }
   end
 end

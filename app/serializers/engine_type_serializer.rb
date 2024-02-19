@@ -1,4 +1,4 @@
 class EngineTypeSerializer
   include JSONAPI::Serializer
-  attributes :name
+  attributes :id, :name
 end

@@ -1,9 +1,10 @@
+require 'faker'
+
 FactoryBot.define do
   factory :reservation do
-    date { Date.today }
-    car { nil }
-    user { nil }
-
-    association :city
+    date { Faker::Date.forward(days: 30) }
+    city
+    car
+    user
   end
 end

@@ -1,12 +1,13 @@
 # create the admin user
-users = User.find_or_create_by!(username: Rails.application.credentials.admin[:username]) do |user|
+User.find_or_create_by!(
+  username: Rails.application.credentials.admin[:username]
+) do |user|
   user.password = Rails.application.credentials.admin[:password]
   user.password_confirmation = Rails.application.credentials.admin[:password]
   user.email = Rails.application.credentials.admin[:email]
   user.name = "Admin User"
   user.role = :admin
 end
-
 
 # Create cities
 cities = [
@@ -34,12 +35,6 @@ cities = [
 
 cities.each { |city_name| City.find_or_create_by!(name: city_name) }
 
-# Create car models
-car_names = ['Toyota Camry', 'Honda Accord', 'Ford Mustang', 'Chevrolet Malibu', 'Hyundai Sonata', 'Nissan Altima', 'Volkswagen Passat', 'Subaru Legacy', 'Kia Optima', 'Audi A4', 'BMW 3 Series', 'Mercedes-Benz C-Class', 'Lexus ES', 'Volvo S60', 'Infiniti Q50', 'Acura TLX', 'Cadillac CT5', 'Lincoln MKZ', 'Alfa Romeo Giulia', 'Jaguar XE']
-car_names.each_with_index { |car_name, index| Car.find_or_create_by!(name: car_name, description: "Description #{index + 1}") }
-
-Reservation.create!(date: Date.tomorrow, car: Car.first, city: City.first, user: User.first)
-Reservation.create!(date: Date.tomorrow, car:Car.last, city: City.last, user: User.last)
 # Create engine types
 engine_types = [
   "4-cylinder",
@@ -48,6 +43,7 @@ engine_types = [
   "Turbocharged 4-cylinder",
   "Electric"
 ]
+
 
 engine_types.each do |engine_type_name|
   EngineType.find_or_create_by!(name: engine_type_name)
@@ -60,6 +56,7 @@ car = [
     name: 'Toyota Camry',
     description:
       'Reliable and spacious sedan with comfortable seating for five. Great fuel efficiency and smooth ride for commuting or road trips.',
+    car_image: 'Toyota-Camry.png',
     car_details: {
       engine_type_id: 1,
       horsepower: 203,
@@ -77,7 +74,8 @@ car = [
     name: 'Honda Accord',
     description:
       'Sporty yet sensible, the Accord offers enjoyable handling, ample passenger room, and excellent gas mileage.',
-    car_details: {
+      car_image: 'Honda-Accord.png',
+      car_details: {
       engine_type_id: 4,
       horsepower: 192,
       torque: 192,
@@ -94,7 +92,8 @@ car = [
     name: 'Chevrolet Malibu',
     description:
       'Stylish and affordable mid-size sedan. Quiet ride, modern infotainment system, and fuel-efficient option.',
-    car_details: {
+      car_image: 'Chevrolet-Malibu.png',
+      car_details: {
       engine_type_id: 4,
       horsepower: 160,
       torque: 184,
@@ -111,6 +110,7 @@ car = [
     name: 'Hyundai Sonata',
     description:
       'Value-packed sedan with eye-catching design, intuitive technology, and a generous warranty.',
+      car_image: 'Hyundai-Sonata.png',
     car_details: {
       engine_type_id: 1,
       horsepower: 191,
@@ -130,7 +130,8 @@ car = [
     name: 'Nissan Altima',
     description:
       'Comfortable and practical. Ideal for everyday driving with responsive handling and a roomy interior.',
-    car_details: {
+      car_image: 'Nissan-Altima.png',
+      car_details: {
       engine_type_id: 1,
       horsepower: 188,
       torque: 180,
@@ -148,6 +149,7 @@ car = [
     name: 'Volkswagen Passat',
     description:
       'European-inspired handling in a spacious, affordable package. A refined choice for longer rides.',
+      car_image: 'Volkswagen-Passat.png',
     car_details: {
       engine_type_id: 4,
       horsepower: 174,
@@ -166,7 +168,8 @@ car = [
     name: 'Subaru Legacy',
     description:
       'The only standard all-wheel-drive sedan in its class. Perfect for all-weather adventures and enhanced traction.',
-    car_details: {
+      car_image: 'Subaru-Legacy.png',
+      car_details: {
       engine_type_id: 1,
       horsepower: 182,
       torque: 176,
@@ -185,7 +188,8 @@ car = [
     name: 'Kia Optima',
     description:
       'Sharp looks, comfortable cabin, and impressive technology features make the Optima a smart and stylish choice.',
-    car_details: {
+      car_image: 'Kia-Optima.png',
+      car_details: {
       engine_type_id: 1,
       horsepower: 185,
       torque: 178,
@@ -204,7 +208,8 @@ car = [
     name: 'Audi A4',
     description:
       "Upscale interior, responsive handling, and Audi's legendary Quattro all-wheel drive for sporty confidence.",
-    car_details: {
+      car_image: 'Audi-A4.png',
+      car_details: {
       engine_type_id: 4,
       horsepower: 261,
       torque: 273,
@@ -223,6 +228,7 @@ car = [
     name: 'BMW 3 Series',
     description:
       'The benchmark for sports sedans. Athletic handling, powerful engines, and a high-end cabin.',
+      car_image: 'BMW-3-Series.png',
     car_details: {
       engine_type_id: 4,
       horsepower: 255,
@@ -242,6 +248,7 @@ car = [
     name: 'Mercedes-Benz C-Class',
     description:
       'Epitome of luxury. Comfortable ride, sophisticated interior, and a brand renowned for prestige.',
+      car_image: 'Mercedes-Benz-C-Class.png',
     car_details: {
       engine_type_id: 4,
       horsepower: 255,
@@ -261,6 +268,7 @@ car = [
     name: 'Lexus ES',
     description:
       'Prioritizes comfort and refinement. Whisper-quiet cabin, plush seats, and renowned Lexus reliability.',
+      car_image: 'Lexus-ES.png',
     car_details: {
       engine_type_id: 2,
       horsepower: 302,
@@ -281,6 +289,7 @@ car = [
     name: 'Volvo S60',
     description:
       'Scandinavian design with excellent safety ratings. Understated elegance and innovative technology.',
+      car_image: 'Volvo-S60.png',
     car_details: {
       engine_type_id: 4,
       horsepower: 247,
@@ -300,7 +309,8 @@ car = [
     name: 'Infiniti Q50',
     description:
       'Powerful engine choices and driver-oriented feel. Offers sporty performance in a luxurious package.',
-    car_details: {
+      car_image: 'Infiniti-Q50.png',
+      car_details: {
       engine_type_id: 2,
       horsepower: 300,
       torque: 295,
@@ -319,6 +329,7 @@ car = [
     name: 'Acura TLX',
     description:
       "Combines a sporty character with Acura's reputation for reliability and a well-appointed interior.",
+      car_image: 'Acura-TLX.png',
     car_details: {
       engine_type_id: 4,
       horsepower: 272,
@@ -338,7 +349,8 @@ car = [
     name: 'Genesis G80',
     description:
       'Luxury sedan with a strong value proposition. Spacious cabin, refined ride, and a long list of standard features.',
-    car_details: {
+      car_image: 'Genesis-G80.png',
+      car_details: {
       engine_type_id: 4,
       horsepower: 300,
       torque: 311,
@@ -357,10 +369,12 @@ car = [
     name: 'Tesla Model 3',
     description:
       'Electric car with impressive range and rapid acceleration. Cutting-edge technology and minimalist design.',
-    car_details: {
+      car_image: 'Tesla-Model-3.png',
+      car_details: {
       engine_type_id: 5,
       horsepower: 283,
       torque: 325,
+      range: '267 miles (EPA est.)',
       seating_capacity: 5,
       cargo_space: '15 cu ft + front trunk',
       infotainment_system:
@@ -376,10 +390,12 @@ car = [
     name: 'Porsche Taycan',
     description:
       "Electric sports car with breathtaking performance and a luxurious interior. A true driver's car.",
+      car_image: 'Porsche-Taycan.png',
     car_details: {
       engine_type_id: 5,
       horsepower: 402,
       torque: 469,
+      range: '227 miles (EPA est.)',
       seating_capacity: 4,
       cargo_space: '14.3 cu ft (split between front & rear)',
       infotainment_system:
@@ -396,6 +412,7 @@ car = [
     name: 'Jaguar XE',
     description:
       'Nimble and luxurious compact sport sedan known for its engaging performance and British heritage.',
+      car_image: 'Jaguar-XE.png',
     car_details: {
       engine_type_id: 4,
       horsepower: 247,
@@ -415,7 +432,8 @@ car = [
     name: 'Maserati Ghibli',
     description:
       'Italian luxury and performance. A stylish and exclusive choice for those who appreciate the finer things.',
-    car_details: {
+      car_image: 'Maserati-Ghibli.png',
+      car_details: {
       engine_type_id: 2,
       horsepower: 345,
       torque: 369,
@@ -435,7 +453,8 @@ car = [
     name: 'Cadillac CT5',
     description:
       'American luxury with bold styling and modern technology. Spacious interior and smooth driving dynamics.',
-    car_details: {
+      car_image: 'Cadillac-CT5.png',
+      car_details: {
       engine_type_id: 4,
       horsepower: 237,
       torque: 258,
@@ -455,6 +474,7 @@ car = [
     name: 'Lincoln MKZ',
     description:
       'Comfort-focused luxury sedan with an elegant interior, quiet ride, and a focus on relaxation.',
+      car_image: 'Lincoln-MKZ.png',
     car_details: {
       engine_type_id: 2,
       horsepower: 350,
@@ -476,6 +496,7 @@ car = [
     name: 'Alfa Romeo Giulia',
     description:
       'Italian flair and passionate driving experience. Athletic handling and striking design set it apart.',
+      car_image: 'Alfa-Romeo-Giulia.png',
     car_details: {
       engine_type_id: 4,
       horsepower: 280,
@@ -496,6 +517,7 @@ car = [
     name: 'Ford Mustang',
     description:
       'Iconic American muscle car with powerful engine options and bold styling.',
+      car_image: 'Ford-Mustang.png',
     car_details: {
       engine_type_id: 1,
       horsepower: 310,
@@ -516,7 +538,14 @@ car.each do |car|
   new_car = Car.find_or_initialize_by(name: car[:name])
   if new_car.new_record?
     new_car.description = car[:description]
+    new_car.car_image.attach(io: File.open(Rails.root.join('db', 'cars-images', car[:car_image])), filename: car[:car_image])
     new_car.build_car_detail(car[:car_details])
     new_car.save
+
+    if new_car.save
+      new_car.set_image_url
+      new_car.save
+    end
+
   end
 end

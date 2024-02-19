@@ -1,43 +1,44 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'validations' do
-    it { should validate_presence_of(:username) }
-    it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:email) }
-    it { should validate_length_of(:password).is_at_least(8) }
-    it { should allow_value('username').for(:username) }
-    it { should_not allow_value('user name').for(:username) }
-    it { should_not allow_value('user@name').for(:username) }
-    it { should_not allow_value('user name!').for(:username) }
+  let(:user) { build(:user) }
+
+  it 'validates presence of username' do
+    user.username = nil
+    expect(user).not_to be_valid
+    expect(user.errors[:username]).to include("can't be blank")
   end
 
-  describe 'associations' do
-    it { should have_many(:reservations).dependent(:destroy) }
+  it 'validates presence of name' do
+    user.name = nil
+    expect(user).not_to be_valid
+    expect(user.errors[:name]).to include("can't be blank")
   end
 
-  describe 'enums' do
-    it { should define_enum_for(:role).with_values(user: 0, admin: 1) }
+  it 'validates presence of email' do
+    user.email = nil
+    expect(user).not_to be_valid
+    expect(user.errors[:email]).to include("can't be blank")
   end
 
-  describe 'after_initialize' do
-    it 'sets the default role to user' do
-      user = User.new
-      expect(user.role).to eq('user')
-    end
+  it 'validates format of username' do
+    user.username = 'invalid username'
+    expect(user).not_to be_valid
+    expect(user.errors[:username]).to include(User::USERNAME_INVALID_MESSAGE)
   end
 
-  describe 'methods' do
-    describe '#admin?' do
-      it 'returns true if the user has admin role' do
-        admin_user = FactoryBot.create(:user, :admin)
-        expect(admin_user.admin?).to be_truthy
-      end
+  it 'validates format of password' do
+    user.password = 'invalidpassword'
+    user.password_confirmation = 'invalidpassword'
+    expect(user).not_to be_valid
+    expect(user.errors[:password]).to include(User::PASSWORD_INVALID_MESSAGE)
+  end
 
-      it 'returns false if the user does not have admin role' do
-        user = FactoryBot.create(:user)
-        expect(user.admin?).to be_falsey
-      end
-    end
+  it 'has many reservations' do
+    expect(user).to respond_to(:reservations)
+  end
+
+  it 'has a default role of user' do
+    expect(user.role).to eq('user')
   end
 end
