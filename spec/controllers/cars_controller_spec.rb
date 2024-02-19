@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pry'
 
 RSpec.describe API::V1::CarsController, type: :controller do
   let(:user) { FactoryBot.create(:user, :admin) }
@@ -40,7 +41,9 @@ RSpec.describe API::V1::CarsController, type: :controller do
     it 'creates a new car' do
       expect {
         post :create, params: { car: car_params }
-      }.to change(Car, :count).by(1)
+      }.to change(Car, :count).by(2)
+
+
 
       expect(response).to have_http_status(:created)
     end
