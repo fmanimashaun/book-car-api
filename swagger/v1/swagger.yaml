@@ -1,0 +1,651 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/cars":
+    post:
+      summary: Creates a car
+      tags:
+      - create
+      parameters: []
+      responses:
+        '201':
+          description: car created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      car_image:
+                        type: string
+                      car_detail_attributes:
+                        type: object
+                        properties:
+                          engine_type_id:
+                            type: string
+                          horsepower:
+                            type: string
+                          torque:
+                            type: string
+                          fuel_economy:
+                            type: string
+                          range:
+                            type: string
+                          seating_capacity:
+                            type: string
+                          cargo_space:
+                            type: string
+                          infotainment_system:
+                            type: string
+                          safety_rating:
+                            type: string
+                          tech_features:
+                            type: string
+                          special_features:
+                            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                car_image:
+                  type: string
+                car_detail_attributes:
+                  type: object
+                  properties:
+                    engine_type_id:
+                      type: string
+                    horsepower:
+                      type: string
+                    torque:
+                      type: string
+                    fuel_economy:
+                      type: string
+                    range:
+                      type: string
+                    seating_capacity:
+                      type: string
+                    cargo_space:
+                      type: string
+                    infotainment_system:
+                      type: string
+                    safety_rating:
+                      type: string
+                    tech_features:
+                      type: string
+                    special_features:
+                      type: string
+  "/api/v1/cars/{id}":
+    get:
+      summary: Retrieves a car
+      tags:
+      - Get
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: car found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      car_image:
+                        type: string
+                      car_detail_attributes:
+                        type: object
+                        properties:
+                          engine_type_id:
+                            type: string
+                          horsepower:
+                            type: string
+                          torque:
+                            type: string
+                          fuel_economy:
+                            type: string
+                          range:
+                            type: string
+                          seating_capacity:
+                            type: string
+                          cargo_space:
+                            type: string
+                          infotainment_system:
+                            type: string
+                          safety_rating:
+                            type: string
+                          tech_features:
+                            type: string
+                          special_features:
+                            type: string
+        '404':
+          description: car not found
+    put:
+      summary: Updates a car
+      tags:
+      - update
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: car updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      car_image:
+                        type: string
+                      car_detail_attributes:
+                        type: object
+                        properties:
+                          engine_type_id:
+                            type: string
+                          horsepower:
+                            type: string
+                          torque:
+                            type: string
+                          fuel_economy:
+                            type: string
+                          range:
+                            type: string
+                          seating_capacity:
+                            type: string
+                          cargo_space:
+                            type: string
+                          infotainment_system:
+                            type: string
+                          safety_rating:
+                            type: string
+                          tech_features:
+                            type: string
+                          special_features:
+                            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                car_image:
+                  type: string
+                car_detail_attributes:
+                  type: object
+                  properties:
+                    engine_type_id:
+                      type: string
+                    horsepower:
+                      type: string
+                    torque:
+                      type: string
+                    fuel_economy:
+                      type: string
+                    range:
+                      type: string
+                    seating_capacity:
+                      type: string
+                    cargo_space:
+                      type: string
+                    infotainment_system:
+                      type: string
+                    safety_rating:
+                      type: string
+                    tech_features:
+                      type: string
+                    special_features:
+                      type: string
+    delete:
+      summary: Deletes a car
+      tags:
+      - delete
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: car deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+  "/api/v1/cities":
+    post:
+      summary: Creates a city
+      tags:
+      - create
+      parameters: []
+      responses:
+        '201':
+          description: city created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+  "/api/v1/cities/{id}":
+    get:
+      summary: Retrieves a city
+      tags:
+      - Get
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: city found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+        '404':
+          description: city not found
+    put:
+      summary: Updates a city
+      tags:
+      - update
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: city updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+    delete:
+      summary: Deletes a city
+      tags:
+      - delete
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: city deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+  "/api/v1/initial_data":
+    get:
+      summary: Retrieves initial data
+      tags:
+      - Get
+      responses:
+        '200':
+          description: initial data found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                  data:
+                    type: object
+                    properties:
+                      cars:
+                        type: array
+                        properties:
+                          id:
+                            type: string
+                          name:
+                            type: string
+                          description:
+                            type: string
+                          image_url:
+                            type: string
+                      cities:
+                        type: array
+                        properties:
+                          id:
+                            type: string
+                          name:
+                            type: string
+                      engine_types:
+                        type: array
+                        properties:
+                          id:
+                            type: string
+                          name:
+                            type: string
+  "/api/v1/reservations":
+    get:
+      summary: Retrieves reservations belonging to a user
+      tags:
+      - Get
+      responses:
+        '200':
+          description: reservation found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                  data:
+                    type: array
+                    properties:
+                    - id:
+                        type: integer
+                      date:
+                        type: string
+        '404':
+          description: reservation not found
+    post:
+      summary: Creates a reservation
+      tags:
+      - create
+      parameters: []
+      responses:
+        '201':
+          description: reservation created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      date:
+                        type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                city_id:
+                  type: integer
+                car_id:
+                  type: integer
+                user_id:
+                  type: integer
+                required:
+                - date
+                - city_id
+                - user_id
+                - car_id
+  "/api/v1/reservations/{id}":
+    get:
+      summary: Retrieves a reservation
+      tags:
+      - Get
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: reservation found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      date:
+                        type: string
+        '404':
+          description: reservation not found
+    put:
+      summary: Updates a reservation
+      tags:
+      - update
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: reservation updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      date:
+                        type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+    delete:
+      summary: Deletes a reservation
+      tags:
+      - delete
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: reservation deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
