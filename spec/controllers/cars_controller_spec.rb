@@ -3,11 +3,11 @@ require 'pry'
 
 RSpec.describe API::V1::CarsController, type: :controller do
   let(:user) { FactoryBot.create(:user, :admin) }
-  let(:car) { FactoryBot.create(:car) }
+  # let(:car) { FactoryBot.create(:car) }
   let(:car_params) do
     {
-      name: car.name,
-      description: car.description,
+      name:  Faker::Vehicle.make_and_model,
+      description: Faker::Vehicle.standard_specs.sample,
       car_image: fixture_file_upload(Rails.root.join('spec', 'support', 'assets', 'test-image.png'), 'image/png'),
       car_detail_attributes: {
         engine_type_id: FactoryBot.create(:engine_type).id,
@@ -31,6 +31,7 @@ RSpec.describe API::V1::CarsController, type: :controller do
 
   describe 'GET #show' do
     it 'returns a success response' do
+      car = FactoryBot.create(:car)
       get :show, params: { id: car.id }
 
       expect(response).to be_successful
@@ -39,9 +40,10 @@ RSpec.describe API::V1::CarsController, type: :controller do
 
   describe 'POST #create' do
     it 'creates a new car' do
+      car = FactoryBot.create(:car)
       expect {
         post :create, params: { car: car_params }
-      }.to change(Car, :count).by(2)
+      }.to change(Car, :count).by(1)
 
 
 
