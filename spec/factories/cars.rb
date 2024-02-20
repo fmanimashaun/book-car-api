@@ -12,12 +12,12 @@ FactoryBot.define do
 
     # Build car_detail association using transient attributes
     after(:build) do |car, evaluator|
-      car.car_detail ||= build(:car_detail, car: car, **evaluator.car_detail_attributes)
+      car.car_detail ||= build(:car_detail, car:, **evaluator.car_detail_attributes)
     end
 
     # Create car_detail association using transient attributes
     after(:create) do |car, evaluator|
-      car.create_car_detail(evaluator.car_detail_attributes.merge(car: car))
+      car.create_car_detail(evaluator.car_detail_attributes.merge(car:))
       car.set_image_url
     end
 
