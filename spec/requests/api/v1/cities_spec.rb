@@ -21,9 +21,9 @@ RSpec.describe API::V1::CitiesController, type: :controller do
   describe 'POST #create' do
     context 'with valid parameters' do
       it 'creates a new city' do
-        expect {
+        expect do
           post :create, params: { city: valid_attributes }
-        }.to change(City, :count).by(1)
+        end.to change(City, :count).by(1)
       end
 
       it 'renders a JSON response with the new city' do
@@ -35,9 +35,9 @@ RSpec.describe API::V1::CitiesController, type: :controller do
 
     context 'with invalid parameters' do
       it 'does not create a new city' do
-        expect {
+        expect do
           post :create, params: { city: invalid_attributes }
-        }.not_to change(City, :count)
+        end.not_to change(City, :count)
       end
 
       it 'renders a JSON response with errors for the new city' do
@@ -77,9 +77,9 @@ RSpec.describe API::V1::CitiesController, type: :controller do
   describe 'DELETE #destroy' do
     it 'destroys the requested city' do
       city = City.create! valid_attributes
-      expect {
+      expect do
         delete :destroy, params: { id: city.id }
-      }.to change(City, :count).by(-1)
+      end.to change(City, :count).by(-1)
     end
   end
 end
