@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: rails_jwt_tutorial_test
+  database: book_car_api_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: rails_jwt_tutorial_production
-  username: rails_jwt_tutorial
-  password: <%= ENV["RAILS_JWT_TUTORIAL_DATABASE_PASSWORD"] %>
+  database: book_car_api_production
+  username: book_car_api
+  password: <%= ENV["BOOK_CAR_API_DATABASE_PASSWORD"] %>
