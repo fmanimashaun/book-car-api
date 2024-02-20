@@ -2,7 +2,6 @@ require 'swagger_helper'
 
 RSpec.describe 'api/cars', type: :request do
   path '/api/v1/cars' do
-
     post 'Creates a car' do
       tags 'create'
       consumes 'application/json'
@@ -26,7 +25,7 @@ RSpec.describe 'api/cars', type: :request do
               infotainment_system: { type: :string },
               safety_rating: { type: :string },
               tech_features: { type: :string },
-              special_features: { type: :string },
+              special_features: { type: :string }
             }
           }
         }
@@ -34,49 +33,46 @@ RSpec.describe 'api/cars', type: :request do
 
       response '201', 'car created' do
         schema type: :object,
-          properties: {
-            status: {
-              type: :object,
-              properties: {
-                code: { type: :integer },
-                message: { type: :string }
-              }
-            },
-            data: {
-              type: :object,
-              properties: {
-                id: { type: :integer },
-                name: { type: :string },
-                description: { type: :string },
-                car_image: { type: :string },
-                car_detail_attributes: {
-                  type: :object,
-                  properties: {
-                    engine_type_id: { type: :string },
-                    horsepower: { type: :string },
-                    torque: { type: :string },
-                    fuel_economy: { type: :string },
-                    range: { type: :string },
-                    seating_capacity: { type: :string },
-                    cargo_space: { type: :string },
-                    infotainment_system: { type: :string },
-                    safety_rating: { type: :string },
-                    tech_features: { type: :string },
-                    special_features: { type: :string },
-                  }
-                }
-              }
-            }
-          }
+               properties: {
+                 status: {
+                   type: :object,
+                   properties: {
+                     code: { type: :integer },
+                     message: { type: :string }
+                   }
+                 },
+                 data: {
+                   type: :object,
+                   properties: {
+                     id: { type: :integer },
+                     name: { type: :string },
+                     description: { type: :string },
+                     car_image: { type: :string },
+                     car_detail_attributes: {
+                       type: :object,
+                       properties: {
+                         engine_type_id: { type: :string },
+                         horsepower: { type: :string },
+                         torque: { type: :string },
+                         fuel_economy: { type: :string },
+                         range: { type: :string },
+                         seating_capacity: { type: :string },
+                         cargo_space: { type: :string },
+                         infotainment_system: { type: :string },
+                         safety_rating: { type: :string },
+                         tech_features: { type: :string },
+                         special_features: { type: :string }
+                       }
+                     }
+                   }
+                 }
+               }
         run_test!
       end
-
     end
-    
   end
 
   path '/api/v1/cars/{id}' do
-
     get 'Retrieves a car' do
       tags 'Get'
       produces 'application/json'
@@ -84,40 +80,40 @@ RSpec.describe 'api/cars', type: :request do
 
       response '200', 'car found' do
         schema type: :object,
-          properties: {
-            status: {
-              type: :object,
-              properties: {
-                code: { type: :integer },
-                message: { type: :string }
-              }
-            },
-            data: {
-              type: :object,
-              properties: {
-                id: { type: :integer },
-                name: { type: :string },
-                description: { type: :string },
-                car_image: { type: :string },
-                car_detail_attributes: {
-                  type: :object,
-                  properties: {
-                    engine_type_id: { type: :string },
-                    horsepower: { type: :string },
-                    torque: { type: :string },
-                    fuel_economy: { type: :string },
-                    range: { type: :string },
-                    seating_capacity: { type: :string },
-                    cargo_space: { type: :string },
-                    infotainment_system: { type: :string },
-                    safety_rating: { type: :string },
-                    tech_features: { type: :string },
-                    special_features: { type: :string },
-                  }
-                }
-              }
-            }
-          }
+               properties: {
+                 status: {
+                   type: :object,
+                   properties: {
+                     code: { type: :integer },
+                     message: { type: :string }
+                   }
+                 },
+                 data: {
+                   type: :object,
+                   properties: {
+                     id: { type: :integer },
+                     name: { type: :string },
+                     description: { type: :string },
+                     car_image: { type: :string },
+                     car_detail_attributes: {
+                       type: :object,
+                       properties: {
+                         engine_type_id: { type: :string },
+                         horsepower: { type: :string },
+                         torque: { type: :string },
+                         fuel_economy: { type: :string },
+                         range: { type: :string },
+                         seating_capacity: { type: :string },
+                         cargo_space: { type: :string },
+                         infotainment_system: { type: :string },
+                         safety_rating: { type: :string },
+                         tech_features: { type: :string },
+                         special_features: { type: :string }
+                       }
+                     }
+                   }
+                 }
+               }
 
         let(:id) { create(:car).id }
         run_test!
@@ -152,7 +148,7 @@ RSpec.describe 'api/cars', type: :request do
               infotainment_system: { type: :string },
               safety_rating: { type: :string },
               tech_features: { type: :string },
-              special_features: { type: :string },
+              special_features: { type: :string }
             }
           }
         }
@@ -163,40 +159,40 @@ RSpec.describe 'api/cars', type: :request do
 
       response '200', 'car updated' do
         schema type: :object,
-          properties: {
-            status: {
-              type: :object,
-              properties: {
-                code: { type: :integer },
-                message: { type: :string }
-              }
-            },
-            data: {
-              type: :object,
-              properties: {
-                id: { type: :integer },
-                name: { type: :string },
-                description: { type: :string },
-                car_image: { type: :string },
-                car_detail_attributes: {
-                  type: :object,
-                  properties: {
-                    engine_type_id: { type: :string },
-                    horsepower: { type: :string },
-                    torque: { type: :string },
-                    fuel_economy: { type: :string },
-                    range: { type: :string },
-                    seating_capacity: { type: :string },
-                    cargo_space: { type: :string },
-                    infotainment_system: { type: :string },
-                    safety_rating: { type: :string },
-                    tech_features: { type: :string },
-                    special_features: { type: :string },
-                  }
-                }
-              }
-            }
-          }
+               properties: {
+                 status: {
+                   type: :object,
+                   properties: {
+                     code: { type: :integer },
+                     message: { type: :string }
+                   }
+                 },
+                 data: {
+                   type: :object,
+                   properties: {
+                     id: { type: :integer },
+                     name: { type: :string },
+                     description: { type: :string },
+                     car_image: { type: :string },
+                     car_detail_attributes: {
+                       type: :object,
+                       properties: {
+                         engine_type_id: { type: :string },
+                         horsepower: { type: :string },
+                         torque: { type: :string },
+                         fuel_economy: { type: :string },
+                         range: { type: :string },
+                         seating_capacity: { type: :string },
+                         cargo_space: { type: :string },
+                         infotainment_system: { type: :string },
+                         safety_rating: { type: :string },
+                         tech_features: { type: :string },
+                         special_features: { type: :string }
+                       }
+                     }
+                   }
+                 }
+               }
 
         run_test!
       end
@@ -211,20 +207,18 @@ RSpec.describe 'api/cars', type: :request do
 
       response '200', 'car deleted' do
         schema type: :object,
-          properties: {
-            status: {
-              type: :object,
-              properties: {
-                code: { type: :integer },
-                message: { type: :string }
-              }
-            },
-          }
+               properties: {
+                 status: {
+                   type: :object,
+                   properties: {
+                     code: { type: :integer },
+                     message: { type: :string }
+                   }
+                 }
+               }
 
         run_test!
       end
     end
-
   end
-
 end

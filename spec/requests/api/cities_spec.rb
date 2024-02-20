@@ -2,7 +2,6 @@ require 'swagger_helper'
 
 RSpec.describe 'api/cities', type: :request do
   path '/api/v1/cities' do
-
     post 'Creates a city' do
       tags 'create'
       consumes 'application/json'
@@ -10,36 +9,34 @@ RSpec.describe 'api/cities', type: :request do
       parameter name: :city, in: :body, schema: {
         type: :object,
         properties: {
-          name: { type: :string },
+          name: { type: :string }
         }
       }
 
       response '201', 'city created' do
         schema type: :object,
-          properties: {
-            status: {
-              type: :object,
-              properties: {
-                code: { type: :integer },
-                message: { type: :string }
-              }
-            },
-            data: {
-              type: :object,
-              properties: {
-                id: { type: :integer },
-                name: { type: :string },
-              }
-            }
-          }
+               properties: {
+                 status: {
+                   type: :object,
+                   properties: {
+                     code: { type: :integer },
+                     message: { type: :string }
+                   }
+                 },
+                 data: {
+                   type: :object,
+                   properties: {
+                     id: { type: :integer },
+                     name: { type: :string }
+                   }
+                 }
+               }
         run_test!
       end
-
     end
   end
 
   path '/api/v1/cities/{id}' do
-
     get 'Retrieves a city' do
       tags 'Get'
       produces 'application/json'
@@ -49,22 +46,22 @@ RSpec.describe 'api/cities', type: :request do
         let(:id) { create(:city).id }
 
         schema type: :object,
-          properties: {
-            status: {
-              type: :object,
-              properties: {
-                code: { type: :integer },
-                message: { type: :string }
-              }
-            },
-            data: {
-              type: :object,
-              properties: {
-                id: { type: :integer },
-                name: { type: :string },
-              }
-            }
-          }
+               properties: {
+                 status: {
+                   type: :object,
+                   properties: {
+                     code: { type: :integer },
+                     message: { type: :string }
+                   }
+                 },
+                 data: {
+                   type: :object,
+                   properties: {
+                     id: { type: :integer },
+                     name: { type: :string }
+                   }
+                 }
+               }
 
         run_test!
       end
@@ -91,22 +88,22 @@ RSpec.describe 'api/cities', type: :request do
 
       response '200', 'city updated' do
         schema type: :object,
-          properties: {
-            status: {
-              type: :object,
-              properties: {
-                code: { type: :integer },
-                message: { type: :string }
-              }
-            },
-            data: {
-              type: :object,
-              properties: {
-                id: { type: :integer },
-                name: { type: :string },
-              }
-            }
-          }
+               properties: {
+                 status: {
+                   type: :object,
+                   properties: {
+                     code: { type: :integer },
+                     message: { type: :string }
+                   }
+                 },
+                 data: {
+                   type: :object,
+                   properties: {
+                     id: { type: :integer },
+                     name: { type: :string }
+                   }
+                 }
+               }
 
         run_test!
       end
@@ -121,19 +118,18 @@ RSpec.describe 'api/cities', type: :request do
 
       response '200', 'city deleted' do
         schema type: :object,
-          properties: {
-            status: {
-              type: :object,
-              properties: {
-                code: { type: :integer },
-                message: { type: :string }
-              }
-            },
-          }
+               properties: {
+                 status: {
+                   type: :object,
+                   properties: {
+                     code: { type: :integer },
+                     message: { type: :string }
+                   }
+                 }
+               }
 
         run_test!
       end
     end
-
   end
 end
