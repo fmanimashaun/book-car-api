@@ -4,17 +4,16 @@ RSpec.describe API::V1::InitialDataController, type: :controller do
   let!(:city) { create(:city) }
   let!(:car) { create(:car) }
 
-
   describe 'GET #index' do
-  before do
-    get :index
-  end
+    before do
+      get :index
+    end
 
-  it 'returns a success response' do
-    expect(response).to be_successful
-  end
+    it 'returns a success response' do
+      expect(response).to be_successful
+    end
 
-  it 'returns all cities, engine types, and cars' do
+    it 'returns all cities, engine types, and cars' do
       initial_cities_count = City.count
       initial_engine_type_count = EngineType.count
       initial_cars_count = Car.count
