@@ -147,7 +147,7 @@ RSpec.describe 'api/reservations', type: :request do
 
     delete 'Deletes a reservation' do
       let(:id) { create(:reservation).id }
-      
+
       tags 'delete'
       produces 'application/json'
       parameter name: :id, in: :path, type: :string
