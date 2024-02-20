@@ -3,7 +3,6 @@ require 'pry'
 
 RSpec.describe API::V1::CarsController, type: :controller do
   let(:user) { FactoryBot.create(:user, :admin) }
-  # let(:car) { FactoryBot.create(:car) }
   let(:car_params) do
     {
       name: Faker::Vehicle.make_and_model,
