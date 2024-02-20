@@ -1,6 +1,12 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/reservations', type: :request do
+  let(:user) { create(:user, :admin) }
+
+  before do
+    sign_in user
+  end
+
   path '/api/v1/reservations' do
     get 'Retrieves reservations belonging to a user' do
       tags 'Get'
@@ -23,14 +29,11 @@ RSpec.describe 'api/reservations', type: :request do
 
         run_test!
       end
-
-      response '404', 'reservation not found' do
-        let(:id) { 'invalid' }
-        run_test!
-      end
     end
 
     post 'Creates a reservation' do
+      let(:reservation) { create(:reservation) }
+
       tags 'create'
       consumes 'application/json'
       produces 'application/json'
@@ -105,18 +108,19 @@ RSpec.describe 'api/reservations', type: :request do
     end
 
     put 'Updates a reservation' do
+      let(:reservation) { create(:reservation) }
+      let(:id) { reservation.id }
+
       tags 'update'
       consumes 'application/json'
       produces 'application/json'
-      parameter name: :city, in: :body, schema: {
+      parameter name: :reservation, in: :body, schema: {
         type: :object,
         properties: {
           date: { type: :string }
         }
       }
       parameter name: :id, in: :path, type: :string
-
-      let(:id) { create(:reservation).id }
 
       response '200', 'reservation updated' do
         schema type: :object,

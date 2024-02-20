@@ -1,6 +1,12 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/initial_data', type: :request do
+  let(:user) { create(:user, :admin) }
+
+  before do
+    sign_in user
+  end
+
   path '/api/v1/initial_data' do
     get 'Retrieves initial data' do
       tags 'Get'

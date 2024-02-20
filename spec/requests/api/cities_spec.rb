@@ -1,6 +1,12 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/cities', type: :request do
+  let(:user) { create(:user, :admin) }
+
+  before do
+    sign_in user
+  end
+
   path '/api/v1/cities' do
     post 'Creates a city' do
       tags 'create'
@@ -12,6 +18,8 @@ RSpec.describe 'api/cities', type: :request do
           name: { type: :string }
         }
       }
+
+      let(:city) { create(:city) }
 
       response '201', 'city created' do
         schema type: :object,
@@ -73,6 +81,8 @@ RSpec.describe 'api/cities', type: :request do
     end
 
     put 'Updates a city' do
+      let(:city) { create(:city) }
+      let(:id) { city.id }
       tags 'update'
       consumes 'application/json'
       produces 'application/json'
@@ -83,8 +93,6 @@ RSpec.describe 'api/cities', type: :request do
         }
       }
       parameter name: :id, in: :path, type: :string
-
-      let(:id) { create(:city).id }
 
       response '200', 'city updated' do
         schema type: :object,
@@ -114,7 +122,7 @@ RSpec.describe 'api/cities', type: :request do
       produces 'application/json'
       parameter name: :id, in: :path, type: :string
 
-      let(:id) { create(:car).id }
+      let(:id) { create(:city).id }
 
       response '200', 'city deleted' do
         schema type: :object,
