@@ -6,7 +6,7 @@ RSpec.describe API::V1::CarsController, type: :controller do
   # let(:car) { FactoryBot.create(:car) }
   let(:car_params) do
     {
-      name:  Faker::Vehicle.make_and_model,
+      name: Faker::Vehicle.make_and_model,
       description: Faker::Vehicle.standard_specs.sample,
       car_image: fixture_file_upload(Rails.root.join('spec', 'support', 'assets', 'test-image.png'), 'image/png'),
       car_detail_attributes: {
@@ -40,12 +40,10 @@ RSpec.describe API::V1::CarsController, type: :controller do
 
   describe 'POST #create' do
     it 'creates a new car' do
-      car = FactoryBot.create(:car)
-      expect {
+      FactoryBot.create(:car)
+      expect do
         post :create, params: { car: car_params }
-      }.to change(Car, :count).by(1)
-
-
+      end.to change(Car, :count).by(1)
 
       expect(response).to have_http_status(:created)
     end
@@ -59,7 +57,6 @@ RSpec.describe API::V1::CarsController, type: :controller do
       json_response = JSON.parse(response.body)
       expect(json_response['status']['code']).to eq(201)
       expect(json_response['data']['name']).to eq(car_params[:name])
-
     end
   end
 end

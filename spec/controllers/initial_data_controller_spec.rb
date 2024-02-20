@@ -35,8 +35,6 @@ RSpec.describe API::V1::InitialDataController, type: :controller do
         { 'id' => engine_type2.id, 'name' => 'Engine Type 2' }
       )
       expect(json_response['data']['cars'].map { |car| car['name'] }).to contain_exactly('Car 1', 'Car 2')
-
-
     end
   end
 end

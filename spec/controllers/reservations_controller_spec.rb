@@ -11,8 +11,8 @@ RSpec.describe API::V1::ReservationsController, type: :controller do
 
   describe 'GET #index' do
     it 'returns reservations of the current user' do
-      reservation1 = create(:reservation, user: user)
-      reservation2 = create(:reservation, user: user)
+      create(:reservation, user:)
+      create(:reservation, user:)
 
       get :index
 
@@ -28,7 +28,7 @@ RSpec.describe API::V1::ReservationsController, type: :controller do
 
   describe 'GET #show' do
     it 'returns a single reservation' do
-      reservation = create(:reservation, user: user)
+      reservation = create(:reservation, user:)
 
       get :show, params: { id: reservation.id }
 
@@ -45,9 +45,9 @@ RSpec.describe API::V1::ReservationsController, type: :controller do
     it 'creates a new reservation' do
       reservation_params = { reservation: { date: Date.today, city_id: city.id, car_id: car.id, user_id: user.id } }
 
-      expect {
+      expect do
         post :create, params: reservation_params
-      }.to change(Reservation, :count).by(1)
+      end.to change(Reservation, :count).by(1)
 
       expect(response).to have_http_status(:created)
       expect(response.content_type).to include('application/json')
@@ -60,7 +60,7 @@ RSpec.describe API::V1::ReservationsController, type: :controller do
 
   describe 'PATCH #update' do
     it 'updates an existing reservation' do
-      reservation = create(:reservation, user: user)
+      reservation = create(:reservation, user:)
       new_date = Date.tomorrow
 
       patch :update, params: { id: reservation.id, reservation: { date: new_date } }
@@ -77,11 +77,11 @@ RSpec.describe API::V1::ReservationsController, type: :controller do
 
   describe 'DELETE #destroy' do
     it 'deletes an existing reservation' do
-      reservation = create(:reservation, user: user)
+      reservation = create(:reservation, user:)
 
-      expect {
+      expect do
         delete :destroy, params: { id: reservation.id }
-      }.to change(Reservation, :count).by(-1)
+      end.to change(Reservation, :count).by(-1)
 
       expect(response).to have_http_status(:ok)
       expect(response.content_type).to include('application/json')
