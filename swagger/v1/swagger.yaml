@@ -63,7 +63,7 @@ paths:
                             type: string
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
               properties:
@@ -72,7 +72,7 @@ paths:
                 description:
                   type: string
                 car_image:
-                  type: string
+                  type: file
                 car_detail_attributes:
                   type: object
                   properties:
@@ -171,7 +171,7 @@ paths:
         in: path
         required: true
         schema:
-          type: string
+          type: integer
       responses:
         '200':
           description: car updated
@@ -235,31 +235,6 @@ paths:
                   type: string
                 car_image:
                   type: string
-                car_detail_attributes:
-                  type: object
-                  properties:
-                    engine_type_id:
-                      type: string
-                    horsepower:
-                      type: string
-                    torque:
-                      type: string
-                    fuel_economy:
-                      type: string
-                    range:
-                      type: string
-                    seating_capacity:
-                      type: string
-                    cargo_space:
-                      type: string
-                    infotainment_system:
-                      type: string
-                    safety_rating:
-                      type: string
-                    tech_features:
-                      type: string
-                    special_features:
-                      type: string
     delete:
       summary: Deletes a car
       tags:
@@ -496,8 +471,6 @@ paths:
                         type: integer
                       date:
                         type: string
-        '404':
-          description: reservation not found
     post:
       summary: Creates a reservation
       tags:
