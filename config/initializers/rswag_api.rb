@@ -1,4 +1,4 @@
-Rswag::Api.configure do |c|
+Rswag::API.configure do |c|
 
   # Specify a root folder where Swagger JSON files are located
   # This is used by the Swagger middleware to serve requests for API descriptions
