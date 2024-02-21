@@ -15,8 +15,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres
-  password: "BrunoyKino2019@"
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -29,7 +27,7 @@ development:
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: rails_jwt_tutorial
+  #username: book_car_api
 
   # The password associated with the PostgreSQL role (username).
   #password:
@@ -50,7 +48,7 @@ development:
   #   debug5, debug4, debug3, debug2, debug1,
   #   log, notice, warning, error, fatal, and panic
   # Defaults to warning.
-  min_messages: debug
+  #min_messages: notice
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
