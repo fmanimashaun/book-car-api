@@ -14,11 +14,14 @@ RSpec.describe API::V1::InitialDataController, type: :controller do
     end
 
     it 'returns all cities, engine types, and cars' do
+      initial_cities_count = City.count
+      initial_engine_type_count = EngineType.count
+      initial_cars_count = Car.count
       json_response = JSON.parse(response.body)
 
-      expect(json_response['data']['cities'].length).to eq(1)
-      expect(json_response['data']['engine_types'].length).to eq(1)
-      expect(json_response['data']['cars'].length).to eq(1)
+      expect(json_response['data']['cities'].length).to eq(initial_cities_count)
+      expect(json_response['data']['engine_types'].length).to eq(initial_engine_type_count)
+      expect(json_response['data']['cars'].length).to eq(initial_cars_count)
     end
   end
 end
