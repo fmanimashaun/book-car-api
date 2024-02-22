@@ -59,6 +59,8 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
+  # debugging tool
+  gem 'pry'
 end
 
 # authentication and authorization
@@ -66,6 +68,3 @@ gem 'cancancan'
 gem 'devise'
 gem 'devise-jwt'
 gem 'jsonapi-serializer'
-
-# debugging tool
-gem 'pry'
