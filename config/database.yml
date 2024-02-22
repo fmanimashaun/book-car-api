@@ -79,6 +79,7 @@ test:
 #
 production:
   <<: *default
-  database: book_car_api_production
-  username: book_car_api
-  password: <%= ENV["BOOK_CAR_API_DATABASE_PASSWORD"] %>
+  # database: book_car_api_production
+  # username: book_car_api
+  # password: <%= ENV["BOOK_CAR_API_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %> 
