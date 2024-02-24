@@ -9,9 +9,12 @@ class Car < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10, maximum: 255 }
   validate :car_image_attached
 
-  def set_image_url
-    self.image_url = Rails.application.routes.url_helpers.url_for(car_image) if car_image.attached?
+ def set_image_url
+    if car_image.attached?
+      self.image_url = Rails.root.join("public", Rails.application.config.active_storage.paths['car_image'].call(car_image)).to_s
+    end
   end
+
 
   private
 
