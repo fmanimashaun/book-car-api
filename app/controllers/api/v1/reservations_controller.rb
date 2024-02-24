@@ -18,7 +18,7 @@ class API::V1::ReservationsController < ApplicationController
   def show
     render json: {
       status: { code: 200, message: 'Reservation fetched successfully.' },
-      data: ReservationSerializer.new(@reservation).serializable_hash[:data][:attributes]
+      data: ReservationWithDetailsSerializer.new(@reservation).serializable_hash[:data][:attributes]
     }, status: :ok
   end
 
