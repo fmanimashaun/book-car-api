@@ -10,9 +10,7 @@ class Car < ApplicationRecord
   validate :car_image_attached
 
  def set_image_url
-    if car_image.attached?
-      self.image_url = Rails.root.join("public", Rails.application.config.active_storage.paths['car_image'].call(car_image)).to_s
-    end
+    self.image_url = Rails.root.join("public", car_image.blob.key).to_s
   end
 
 
