@@ -9,7 +9,7 @@ class API::V1::ReservationsController < ApplicationController
     render json: {
       status: { code: 200, message: 'Reservations fetched successfully.' },
       data: @reservations.map do |reservation|
-              ReservationSerializer.new(reservation).serializable_hash[:data][:attributes]
+              ReservationWithDetailsSerializer.new(reservation).serializable_hash[:data][:attributes]
             end
     }, status: :ok
   end
@@ -29,7 +29,7 @@ class API::V1::ReservationsController < ApplicationController
     if @reservation.save
       render json: {
         status: { code: 201, message: 'Reservation created successfully.' },
-        data: ReservationSerializer.new(@reservation).serializable_hash[:data][:attributes]
+        data: ReservationWithDetailsSerializer.new(@reservation).serializable_hash[:data][:attributes]
       }, status: :created
     else
       render json: @reservation.errors, status: :unprocessable_entity
@@ -41,7 +41,7 @@ class API::V1::ReservationsController < ApplicationController
     if @reservation.update(reservation_params)
       render json: {
         status: { code: 200, message: 'Reservation updated successfully.' },
-        data: ReservationSerializer.new(@reservation).serializable_hash[:data][:attributes]
+        data: ReservationWithDetailsSerializer.new(@reservation).serializable_hash[:data][:attributes]
       }, status: :ok
     else
       render json: @reservation.errors, status: :unprocessable_entity
