@@ -9,10 +9,9 @@ class Car < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10, maximum: 255 }
   validate :car_image_attached
 
- def set_image_url
-    self.image_url = Rails.root.join("public", car_image.blob.key).to_s
+  def set_image_url
+    self.image_url = Rails.root.join('public', car_image.blob.key).to_s
   end
-
 
   private
 
