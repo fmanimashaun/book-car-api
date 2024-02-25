@@ -10,7 +10,7 @@ class Car < ApplicationRecord
   validate :car_image_attached
 
   def set_image_url
-    self.image_url = Rails.root.join('public', car_image.blob.key).to_s
+    self.image_url = Rails.application.routes.url_helpers.rails_blob_url(car_image)
   end
 
   private
