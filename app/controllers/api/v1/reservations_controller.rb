@@ -8,8 +8,10 @@ class API::V1::ReservationsController < ApplicationController
     @reservations = current_user.reservations.includes(:car, :city)
 
     render json: {
-      status: { code: 200, message: 'Reservations fetched.' },
-      data: @reservations.map { |reservation| ReservationSerializer.new(reservation).serializable_hash[:data][:attributes] }
+      status: { code: 200, message: 'Reservations fetched successfully' },
+      data: @reservations.map do |reservation|
+              ReservationSerializer.new(reservation).serializable_hash[:data][:attributes]
+            end
     }, status: :ok
   end
 
