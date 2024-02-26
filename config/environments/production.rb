@@ -89,4 +89,4 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
   config.action_controller.default_url_options = { host: "https://book-car-api-34rf.onrender.com" }
 end
-Rails.application.routes.default_url_options[:host] = 'https://book-car-api-1.onrender.com'
+Rails.application.routes.default_url_options[:host] = 'https://book-car-api-34rf.onrender.com'
