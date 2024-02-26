@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     end
   end
 
+  if Rails.env.development?
+    get "/rails/active_storage/blobs/:signed_id/*filename", to: "active_storage/blobs#show"
+  end
+
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   get '/current_user', to: 'users/current_user#index'
