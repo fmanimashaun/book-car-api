@@ -42,10 +42,6 @@ group :development, :test do
   gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
-  gem 'rswag'
-  gem 'rswag-api'
-  gem 'rswag-specs'
-  gem 'rswag-ui'
   gem 'rubocop', require: false
 end
 
@@ -69,3 +65,8 @@ gem 'jsonapi-serializer'
 
 # debugging tool
 gem 'pry'
+
+gem 'rswag'
+gem 'rswag-api'
+gem 'rswag-specs'
+gem 'rswag-ui'
