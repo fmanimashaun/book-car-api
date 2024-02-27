@@ -70,3 +70,6 @@ gem 'rswag'
 gem 'rswag-api'
 gem 'rswag-specs'
 gem 'rswag-ui'
+
+# adding aws sdk
+gem 'aws-sdk-s3', require: false
