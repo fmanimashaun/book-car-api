@@ -5,7 +5,8 @@ class API::V1::ReservationsController < ApplicationController
 
   # GET /api/v1/reservations
   def index
-    @reservations = current_user.reservations
+    @reservations = current_user.reservations.includes(:car, :city)
+
     render json: {
       status: { code: 200, message: 'Reservations fetched successfully.' },
       data: @reservations.map do |reservation|
