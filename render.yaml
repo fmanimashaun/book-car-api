@@ -1,0 +1,24 @@
+databases:
+  - name: book_car_api
+    databaseName: book_car_api
+    user: book_car_api_user
+    plan: free
+
+services:
+  - type: web
+    name: book_car_api
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    # preDeployCommand: "./bin/rails db:migrate" # preDeployCommand only available on paid instance types
+    startCommand: "bundle exec rails server"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: book_car_api
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2 # sensible default
+    rootDir: "."
