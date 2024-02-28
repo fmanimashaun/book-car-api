@@ -1,6 +1,6 @@
 # create the admin user
 User.find_or_create_by!(
-  username: Rails.application.credentials.admin[:username]
+  username: "admin.user"
 ) do |user|
   user.password = "Password_1234"
   user.password_confirmation = "Password_1234"
