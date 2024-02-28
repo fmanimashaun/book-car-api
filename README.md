@@ -170,7 +170,7 @@ To run tests, navigate to the directory where the project is located on your mac
 Test Suite
 This project contains a suite of unit tests which you can run to ensure everything is functioning as expected. To run these tests, you need RSpec installed.
 
-bundle exec rspec ./spec/controllers
+bundle exec rspec ./spec/requests
 bundle exec rspec ./spec/models
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
