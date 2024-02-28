@@ -153,7 +153,31 @@ rails db:create
 rails db:migrate
 ```
 
-5. Load default date to database
+5. Create config/master.key:
+```bash
+rails credentials:edit
+```
+
+ 
+6. Edit credentials.yml.enc to include AWS keys:
+```bash
+EDITOR="code --wait" rails credentials:edit
+```
+
+7. Add AWS' access key and secret access key (shared through Microverse's platform):
+```yml
+aws:
+  access_key_id: AWS_ACCESS_KEY
+  private_access_key: AWS_PRIVATE_ACCESS_KEY
+```
+
+
+8. Save and close the credentials.yml.enc. The terminal must say:
+```bash
+File encrypted and saved.
+```
+ 
+7. Load default date to database:
 
 ```bash
 rails db:seed
