@@ -192,6 +192,9 @@ bundle exec rspec ./spec/models
 - GitHub: [@simplegoose](https://github.com/simplegoose)
 - LinkedIn: [@Timothy Njoroge](https://linkedin.com/in/timothy-njoroge-mwangi)
 
+👤 **Anwar Hussaini**
+- GitHub: [@M-Anwar-Hussaini](https://github.com/M-Anwar-Hussaini)
+
 👤 **Esteban Palacios**
 
 - GitHub: [@Estete9](https://github.com/Estete9)
