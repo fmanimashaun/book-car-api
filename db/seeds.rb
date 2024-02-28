@@ -2,9 +2,9 @@
 User.find_or_create_by!(
   username: Rails.application.credentials.admin[:username]
 ) do |user|
-  user.password = Rails.application.credentials.admin[:password]
-  user.password_confirmation = Rails.application.credentials.admin[:password]
-  user.email = Rails.application.credentials.admin[:email]
+  user.password = "Password_1234"
+  user.password_confirmation = "Password_1234"
+  user.email = "admin@example.com"
   user.name = "Admin User"
   user.role = :admin
 end
