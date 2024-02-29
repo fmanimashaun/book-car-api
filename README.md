@@ -157,7 +157,7 @@ rails db:migrate
 rails db:seed
 ```
 
-This should start your local server on http://localhost:4000/. Now, you can use the REST API client of your choice to interact with the API.
+This should start your local server on http://localhost:4000/ using `rails s`. Now, you can use the REST API client of your choice to interact with the API.
 
 __For guide on how to setup the database, refer to the [video recording](https://www.loom.com/share/b9872f0da1e8491080b5b2a54a798abd?sid=6441add3-18a9-41e8-bfb8-38e308f2287d)__
 
@@ -172,8 +172,8 @@ To run tests, navigate to the directory where the project is located on your mac
 Test Suite
 This project contains a suite of unit tests which you can run to ensure everything is functioning as expected. To run these tests, you need RSpec installed.
 
-bundle exec rspec ./spec/requests
-bundle exec rspec ./spec/models
+`bundle exec rspec ./spec/requests`
+`bundle exec rspec ./spec/models`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
