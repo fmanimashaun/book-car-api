@@ -127,11 +127,9 @@ bundle install
 
 In order to create databases and run the tests, you need to follow this steps:
 
-1. Remove config/master.key and config/credentials.yml.enc if they exist.
-2. Run `rails secret`. This will generate a key. Copy and reserve the key to use later.
-3. If you use Windows run: `$env:EDITOR="code --wait"; rails credentials:edit` If you use Linux run: `EDITOR="code --wait" bin/rails credentials:edit`
-4. Your editor will open a file, add at the bottom `devise_jwt_secret_key: <the key you copied in step 2>`
-5. Save the file and close the editor. New master.key, credentials.yml.enc files will be generated, and the key will be stored in `Rails.application.credentials.devise_jwt_secret_key`.
+1. Remove `config/credentials.yml.enc` if they exist.
+2. If you use Windows run: `$env:EDITOR="code --wait"; rails credentials:edit` If you use Linux run: `EDITOR="code --wait" bin/rails credentials:edit`
+3. Close the editor. New master.key, credentials.yml.enc files will be generated.
 
 ### Database Setup
 
@@ -152,38 +150,18 @@ rails db:create
 ```bash
 rails db:migrate
 ```
-
-5. Create config/master.key:
-```bash
-rails credentials:edit
-```
-
  
-6. Edit credentials.yml.enc to include AWS keys:
-```bash
-EDITOR="code --wait" rails credentials:edit
-```
-
-7. Add AWS' access key and secret access key (shared through Microverse's platform):
-```yml
-aws:
-  access_key_id: AWS_ACCESS_KEY
-  private_access_key: AWS_PRIVATE_ACCESS_KEY
-```
-
-
-8. Save and close the credentials.yml.enc. The terminal must say:
-```bash
-File encrypted and saved.
-```
- 
-7. Load default date to database:
+5. Load default date to database:
 
 ```bash
 rails db:seed
 ```
 
 This should start your local server on http://localhost:4000/. Now, you can use the REST API client of your choice to interact with the API.
+
+__For guide on how to setup the database, refer to the [video recording](https://www.loom.com/share/b9872f0da1e8491080b5b2a54a798abd?sid=6441add3-18a9-41e8-bfb8-38e308f2287d)__
+
+__For deployment on render, you need to add your AWS credentials to the setup, see [Rails guides](https://edgeguides.rubyonrails.org/active_storage_overview.html#s3-service-amazon-s3-and-s3-compatible-apis) for assistance and additional [video guide](https://gorails.com/episodes/blog-posts-with-file-uploads-using-activestorage-and-amazon-s3)__
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
